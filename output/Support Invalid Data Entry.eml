@@ -1,0 +1,38 @@
+Return-Path: <elmohamedahmedsalama@gmail.com>
+Received: from LAPTOP-CBFP4RQE ([154.176.124.4])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42e7af8905bsm54554505e9.11.2024.09.21.10.44.27
+        for <elmohamedahmedsalama@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 21 Sep 2024 10:44:27 -0700 (PDT)
+Message-ID: <66ef05fb.050a0220.4e2e6.0c9a@mx.google.com>
+From: elmohamedahmedsalama@gmail.com
+To: elmohamedahmedsalama@gmail.com
+Subject: Support Invalid Data Entry
+Date: Sat, 21 Sep 2024 20:44:24 +0300
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+
+Dear Support Team,
+
+I hope this email finds you well. I would Like To bring To your attention an issue regarding some invalid data entries that were detected in the excel sheet during recent processing.
+
+Row number 3 in the excel has invalid records as follows:
+- There are empty required input fields at columns: Request ID, Last Name, Number of Rooms
+- Invalid Check-in date, please re-enter a valid date for the check-in field
+- Invalid Check-out date, please re-enter a valid date for the check-out field
+- Invalid age range, your age should be legal (Between 18 and 65)
+
+
+Row number 7 in the excel has invalid records as follows:
+- There are empty required input fields at columns: Destination, Number of Travellers
+- Your Email is not valid, please re-enter a valid email with a domain
+
+
+Row number 11 in the excel has invalid records as follows:
+- There are empty required input fields at columns: First Name, Email, Check-out, Criteria
+- Invalid Check-in date, please re-enter a valid date for the check-in field
+- Invalid age range, your age should be legal (Between 18 and 65)
+
+
+Best regards,
+Automation Robot

@@ -1,0 +1,426 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Wise_Invoice_Automation" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="io_hotelDictionary" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_transactionItem" Type="InArgument(ui:QueueItem)" />
+    <x:Property Name="in_userReferenceId" Type="InArgument(x:Int32)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1253,4367</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Wise_Invoice_Automation_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Services.RuntimeAnalyze</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Wise_Invoice_Automation" sap:VirtualizedContainerService.HintSize="714,4302" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="travellerFullName" />
+      <Variable x:TypeArguments="si:FileInfo" Name="invoicePDF" />
+      <Variable x:TypeArguments="x:Boolean" Name="invoiceExists" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Browser Chrome: Free Invoice Generator | Create an Invoice Online - Wise" sap:VirtualizedContainerService.HintSize="652,4214" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="Always" ScopeGuid="d59fa53f-c34d-4f65-9c44-61ee6e4cc272" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="618,3974" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Invoice number'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="556,286" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="d59fa53f-c34d-4f65-9c44-61ee6e4cc272" Text="[in_transactionItem.SpecificContent(&quot;Request ID&quot;).ToString]" Version="V4">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://wise.com/us/invoice-generator/" CVScreenId="28445ce1-b6d4-49a3-9d30-6bd0362fc635" DesignTimeRectangle="474, 663, 164, 48" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='invoice-number' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='invoice-number' tag='INPUT' type='text' class='form-control' aaname='Invoice number' /&gt;" Guid="fed5452a-c4ff-4045-8b25-f58ddd06ef1c" InformativeScreenshot="eaf13f837461f21caf8f1941aef573e6.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Free Invoice Generator | Create an Invoice Online - Wise' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="28445ce1-b6d4-49a3-9d30-6bd0362fc635" CvTextArea="473, 637, 101, 13" CvTextArgument="Invoice number" CvType="Text" DesignTimeRectangle="474, 633, 100, 22" ElementType="Text" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' class='control-label' aaname='Invoice number' check:innerText='Invoice number' /&gt;" Guid="025343fc-a108-4620-a320-92be5d823365" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <Assign DisplayName="Assign Traveller Full Name" sap:VirtualizedContainerService.HintSize="556,114" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[travellerFullName]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[in_transactionItem.SpecificContent("First Name").ToString + " " + in_transactionItem.SpecificContent("Last Name").ToString]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Your company details'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="556,286" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="d59fa53f-c34d-4f65-9c44-61ee6e4cc272" Text="[travellerFullName]" Version="V4">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://wise.com/us/invoice-generator/" CVScreenId="9f932190-75a6-40d4-a4ac-37ae462b66b6" DesignTimeRectangle="474, 802, 353, 116" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='company-details' tag='TEXTAREA' /&gt;" FuzzySelectorArgument="&lt;webctrl id='company-details' tag='TEXTAREA' type='' class='form-control medium-textarea' aaname='Your company details' /&gt;" Guid="c48da800-ee0e-4dc0-bbc3-43415d885816" InformativeScreenshot="5298988aedbf16cdbc566f42acad5f8c.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Free Invoice Generator | Create an Invoice Online - Wise' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="9f932190-75a6-40d4-a4ac-37ae462b66b6" CvTextArea="472, 777, 142, 13" CvTextArgument="Your company details" CvType="Text" DesignTimeRectangle="474, 773, 140, 21" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Your company details' class='control-label' tag='LABEL' type='' check:innerText='Your company details' /&gt;" Guid="5057a288-ab51-4a2f-b392-93bf2694cb7e" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Bill to'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="458,286" sap2010:WorkflowViewState.IdRef="NTypeInto_3" ScopeIdentifier="d59fa53f-c34d-4f65-9c44-61ee6e4cc272" Text="[io_hotelDictionary(&quot;Hotel Name&quot;).ToString]" Version="V4">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://wise.com/us/invoice-generator/" CVScreenId="fb3af5be-e38e-420e-9b34-90a4ba896237" DesignTimeRectangle="851, 802, 353, 116" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='client-details' tag='TEXTAREA' /&gt;" FuzzySelectorArgument="&lt;webctrl id='client-details' tag='TEXTAREA' type='' class='form-control medium-textarea' aaname='Bill to' /&gt;" Guid="73f95739-4b91-4ae3-ab3d-e1eef5033eed" InformativeScreenshot="215cab0fe21ede46246927e216647720.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Free Invoice Generator | Create an Invoice Online - Wise' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="fb3af5be-e38e-420e-9b34-90a4ba896237" CvTextArea="850, 777, 36, 13" CvTextArgument="Bill to" CvType="Text" DesignTimeRectangle="851, 773, 35, 21" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Bill to' class='control-label' tag='LABEL' type='' check:innerText='Bill to' /&gt;" Guid="728b88db-5ac6-4736-9071-413df1e154d6" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NSelectItem DisplayName="Select Item 'US dollar'" sap:VirtualizedContainerService.HintSize="458,189" sap2010:WorkflowViewState.IdRef="NSelectItem_1" Item="Egyptian pound" ScopeIdentifier="d59fa53f-c34d-4f65-9c44-61ee6e4cc272" Version="V4">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="50">
+                  <x:String>Myanmar kyat</x:String>
+                  <x:String>Burundian franc</x:String>
+                  <x:String>West African franc</x:String>
+                  <x:String>CFP franc</x:String>
+                  <x:String>Cambodian riel</x:String>
+                  <x:String>Canadian dollar</x:String>
+                  <x:String>Cape Verdean escudo</x:String>
+                  <x:String>Caymanian dollar</x:String>
+                  <x:String>Central African franc</x:String>
+                  <x:String>Chilean peso</x:String>
+                  <x:String>Chinese yuan</x:String>
+                  <x:String>Colombian peso</x:String>
+                  <x:String>Comorian franc</x:String>
+                  <x:String>Congolese franc</x:String>
+                  <x:String>Costa Rican colon</x:String>
+                  <x:String>Croatian kuna</x:String>
+                  <x:String>Cuban Convertible peso</x:String>
+                  <x:String>Cuban peso</x:String>
+                  <x:String>Czech koruna</x:String>
+                  <x:String>Danish krone</x:String>
+                  <x:String>Djiboutian franc</x:String>
+                  <x:String>Dominican peso</x:String>
+                  <x:String>Netherlands Antillean guilder</x:String>
+                  <x:String>East Caribbean dollar</x:String>
+                  <x:String>Egyptian pound</x:String>
+                  <x:String>Eritrean nakfa</x:String>
+                  <x:String>Ethiopian birr</x:String>
+                  <x:String>Falkland Islands pound</x:String>
+                  <x:String>Fijian dollar</x:String>
+                  <x:String>Gambian dalasi</x:String>
+                  <x:String>Georgian lari</x:String>
+                  <x:String>Ghanaian cedi</x:String>
+                  <x:String>Gibraltar pound</x:String>
+                  <x:String>Guatemalan quetzal</x:String>
+                  <x:String>Guinean franc</x:String>
+                  <x:String>Guyanese dollar</x:String>
+                  <x:String>Hungarian forint</x:String>
+                  <x:String>Haitian gourde</x:String>
+                  <x:String>Honduran lempira</x:String>
+                  <x:String>Hong Kong dollar</x:String>
+                  <x:String>Icelandic krona</x:String>
+                  <x:String>Indian rupee</x:String>
+                  <x:String>Indonesian rupiah</x:String>
+                  <x:String>Iranian rial</x:String>
+                  <x:String>Iraqi dinar</x:String>
+                  <x:String>Israeli shekel</x:String>
+                  <x:String>Jamaican dollar</x:String>
+                  <x:String>Japanese yen</x:String>
+                  <x:String>Jordanian dinar</x:String>
+                  <x:String>Kazakhstani tenge</x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable BrowserURL="https://wise.com/us/invoice-generator/" CVScreenId="0aeb6924-c131-436d-8ebc-542f5923167e" DesignTimeRectangle="474, 972, 353, 48" DesignTimeScaleFactor="1" ElementType="Button" FullSelectorArgument="&lt;webctrl id='currency' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl id='currency' tag='BUTTON' type='button' class='form-control np-form-control np-form-control--size-md np-button-input' aaname='US dollar' /&gt;" Guid="5c14ad19-d957-494c-af08-24fcec2a96cc" ImageBase64="" InformativeScreenshot="202fa97fc032ebe98fefc6e6abd16b5b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Free Invoice Generator | Create an Invoice Online - Wise' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="0aeb6924-c131-436d-8ebc-542f5923167e" CvTextArea="473, 946, 61, 16" CvTextArgument="Currency" CvType="Text" DesignTimeRectangle="474, 942, 353, 22" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Currency' class='control-label' tag='LABEL' type='' check:innerText='Currency' /&gt;" Guid="7be66ca8-393e-41c9-9ec0-811d88735d46" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NSelectItem.Target>
+            </uix:NSelectItem>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" ContinueOnError="True" DisplayName="Type Into 'Item description'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="458,310" sap2010:WorkflowViewState.IdRef="NTypeInto_4" ScopeIdentifier="d59fa53f-c34d-4f65-9c44-61ee6e4cc272" Text="[&quot;Your request ID &quot; + in_transactionItem.SpecificContent(&quot;Request ID&quot;).ToString + &#xA;&quot; has been issued and the hotel address is &quot; + io_hotelDictionary(&quot;Hotel Name Url&quot;).ToString + &quot;.&quot; +&#xA;&quot; For more inquires, please contact me on &quot; + in_transactionItem.SpecificContent(&quot;Email&quot;).ToString]" Timeout="[0s]" Version="V4">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://wise.com/us/invoice-generator/" CVScreenId="a9f55ec5-47ae-47b0-bd0e-4020b6cb0d18" DesignTimeRectangle="474, 623, 261, 48" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='desc-item-1726491625761' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='desc-item-1726491625761' tag='INPUT' type='text' class='form-control' aaname='Item description' /&gt;" Guid="c899a33a-05fb-452c-92bf-dc9a9dfbeaa4" InformativeScreenshot="8bb10d00077d73b3b308615036e63d33.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Free Invoice Generator | Create an Invoice Online - Wise' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="a9f55ec5-47ae-47b0-bd0e-4020b6cb0d18" CvTextArea="473, 601, 106, 16" CvTextArgument="Item description" CvType="Text" DesignTimeRectangle="474, 597, 105, 22" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Item description' class='control-label' tag='LABEL' type='' check:innerText='Item description' /&gt;" Guid="f8c04c77-0f6b-4b29-80c3-971243108943" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Unit cost'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="458,286" sap2010:WorkflowViewState.IdRef="NTypeInto_5" ScopeIdentifier="d59fa53f-c34d-4f65-9c44-61ee6e4cc272" Text="[System.Text.RegularExpressions.Regex.Replace(io_hotelDictionary(&quot;Average Price&quot;).ToString, &quot;[^\d]&quot;, &quot;&quot;)]" Version="V4">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://wise.com/us/invoice-generator/" CVScreenId="a9f55ec5-47ae-47b0-bd0e-4020b6cb0d18" DesignTimeRectangle="751, 623, 87, 48" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='rate-item-1726491625761' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='rate-item-1726491625761' tag='INPUT' type='text' class='form-control' aaname='Unit cost' /&gt;" Guid="43ad3b72-1875-413a-90de-27b6a5a94537" InformativeScreenshot="32f092201ee43372103c736ec7076165.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Free Invoice Generator | Create an Invoice Online - Wise' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="a9f55ec5-47ae-47b0-bd0e-4020b6cb0d18" CvTextArea="750, 601, 60, 13" CvTextArgument="Unit cost" CvType="Text" DesignTimeRectangle="751, 597, 58, 22" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Unit cost' class='control-label' tag='LABEL' type='' check:innerText='Unit cost' /&gt;" Guid="7b4f5840-0766-47c4-8641-bf77c90c7cf5" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Quantity'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="458,286" sap2010:WorkflowViewState.IdRef="NTypeInto_6" ScopeIdentifier="d59fa53f-c34d-4f65-9c44-61ee6e4cc272" Text="1" Version="V4">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://wise.com/us/invoice-generator/" CVScreenId="5717a4ee-5215-41c7-babb-736613427831" DesignTimeRectangle="854, 571, 87, 48" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='quantity-item-1726491625761' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='quantity-item-1726491625761' tag='INPUT' type='text' class='form-control' aaname='Quantity' /&gt;" Guid="9a3b3a44-2e02-4992-8c93-06de8155cf80" InformativeScreenshot="0a5556904f5fea8fc9abf0eab3b04566.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Free Invoice Generator | Create an Invoice Online - Wise' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V4" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CVScreenId="5717a4ee-5215-41c7-babb-736613427831" CvTextArea="852, 549, 58, 16" CvTextArgument="Quantity" CvType="Text" DesignTimeRectangle="854, 545, 55, 22" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='Quantity' class='control-label' tag='LABEL' type='' check:innerText='Quantity' /&gt;" Guid="17f43286-4a8a-45ef-9053-ffccc7b9e1d5" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <ui:GetLastDownloadedFile FileResource="{x:Null}" IgnoreFiles="{x:Null}" Timeout="{x:Null}" DisplayName="Wait for Download Invoice" DownloadFolder="[System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), &quot;Downloads&quot;)]" File="[invoicePDF]" sap:VirtualizedContainerService.HintSize="556,592" sap2010:WorkflowViewState.IdRef="GetLastDownloadedFile_1">
+              <ui:GetLastDownloadedFile.Body>
+                <ActivityAction>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,304" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="[3s]" DisplayName="Click 'Create the invoice'" sap:VirtualizedContainerService.HintSize="354,216" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="d59fa53f-c34d-4f65-9c44-61ee6e4cc272" Version="V4">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable BrowserURL="https://wise.com/us/invoice-generator/" CVScreenId="d2d4db3b-da14-4d0c-a5ff-7445c088d7be" CvElementArea="462, 768, 751, 52" CvTextArea="769, 786, 139, 15" CvTextArgument="Create the invoice" CvType="Button" DesignTimeRectangle="466, 842, 746, 48" DesignTimeScaleFactor="1" ElementType="Button" FuzzySelectorArgument="&lt;webctrl aaname='Create the invoice' parentid='invoice-generator' tag='BUTTON' type='button' class='btn btn-md np-btn np-btn-md btn-block np-btn-block btn-accent btn-priority-1' check:innerText='Create the invoice' /&gt;" Guid="506168a0-99b9-4ce2-befd-e919f28e3e29" InformativeScreenshot="2fe1ee06f4da7f7ad52079152af2d42b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Free Invoice Generator | Create an Invoice Online - Wise' /&gt;" SearchSteps="FuzzySelector, CV" Version="V4" Visibility="Interactive" />
+                      </uix:NClick.Target>
+                      <uix:NClick.VerifyOptions>
+                        <uix:VerifyExecutionOptions DisplayName="{x:Null}" Mode="Appears">
+                          <uix:VerifyExecutionOptions.Retry>
+                            <InArgument x:TypeArguments="x:Boolean" />
+                          </uix:VerifyExecutionOptions.Retry>
+                          <uix:VerifyExecutionOptions.Timeout>
+                            <InArgument x:TypeArguments="x:Double" />
+                          </uix:VerifyExecutionOptions.Timeout>
+                        </uix:VerifyExecutionOptions>
+                      </uix:NClick.VerifyOptions>
+                    </uix:NClick>
+                  </Sequence>
+                </ActivityAction>
+              </ui:GetLastDownloadedFile.Body>
+            </ui:GetLastDownloadedFile>
+            <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" DisplayName="Do While Keep Looping Till Invoice Download" sap:VirtualizedContainerService.HintSize="556,390" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+              <ui:InterruptibleDoWhile.Body>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,244" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:FileExistsX DisplayName="File Exists" Exists="[InvoiceExists]" sap:VirtualizedContainerService.HintSize="354,156" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[invoicePDF.FullName]" />
+                </Sequence>
+              </ui:InterruptibleDoWhile.Body>
+              <ui:InterruptibleDoWhile.Condition>
+                <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="Not InvoiceExists" />
+              </ui:InterruptibleDoWhile.Condition>
+            </ui:InterruptibleDoWhile>
+            <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[&quot;output\user &quot; + in_userReferenceId.ToString + &quot;\Invoice.pdf&quot;]" DisplayName="Move File Invoice" sap:VirtualizedContainerService.HintSize="556,191" sap2010:WorkflowViewState.IdRef="MoveFile_2" Overwrite="True" Path="[invoicePDF.FullName]" />
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="556,500" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="520,389" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:RetryScope DisplayName="Retry Scope To Move Invoice" sap:VirtualizedContainerService.HintSize="458,301" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="5" RetryInterval="5.00:00:00">
+                    <ui:RetryScope.ActivityBody>
+                      <ActivityAction>
+                        <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,103" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:RetryScope.ActivityBody>
+                    <ui:RetryScope.Condition>
+                      <ActivityFunc x:TypeArguments="x:Boolean" />
+                    </ui:RetryScope.Condition>
+                  </ui:RetryScope>
+                </Sequence>
+              </ui:CommentOut.Body>
+            </ui:CommentOut>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="556,168" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Invoice Moved Successfuly&quot;]" />
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-8, -8, 1936, 1048" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGqSURBVFhHxZchTwNBEIXX4ZAoQkgqSHAEU0VTQwIEQ3A1BDCEihMkKAwJEiygDoEHjziH5wegKep+wtHXZunudKa7y5S7Jl+abKdv3r3Z22QNPvlXtpoPsiL/zsrhd/XfPA2yF/ScNK+pMaEcmRi54QvqoDDMYp2UTRuoZho4fexUS5tmLqztLbI9ggngj5xgKicPHVY/aODq7ZAVTOXu45jVj9oD7aNlTwypYE1iZWvBq8capwuiDNAUuuctts5Cx9Z/3mbrQJQBgKdwRWGKq+NGJsUPog1QYSnWncv1qDrLnxOQxpASP4gy0Ltte6Jocv95NlWXGj8IGsD76wqiuSSaGj+YaeDmvecJAkSPRCxuxKnxA9EAnpIKctgT7uJ1f+o3bkwU0UBMc2DHQeMPnRUW1sDB9YYnJuHOmJ5+SMTVlAhuwhgwa7c5zHB1HHMx0O23PAO7w3FwdRxqA9hobnMgHdMcagM0fmxerk5CbYAe0SnxA5UBvIJuc5ASP1AZ0MYPVAa08QP1HtBiGrqW/YIECrpYF7gWNnc5RU/3hlzbJXX8sMW4uTE/5Wxj6lTXMCkAAAAASUVORK5CYII=" InformativeScreenshot="a5bee26ae3fa93f75ab6d0cd19260886.jpg" Selector="&lt;html app='chrome.exe' title='Free Invoice Generator | Create an Invoice Online - Wise' /&gt;" Title="Free Invoice Generator | Create an Invoice Online - Wise" Url="https://wise.com/us/invoice-generator/" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

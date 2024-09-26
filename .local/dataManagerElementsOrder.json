@@ -1,0 +1,148 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Main.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "supportMessage&StateMachine_1",
+        "dt_dataTable&StateMachine_1",
+        "isExcelRead&StateMachine_1",
+        "emptyColumnsList&StateMachine_1",
+        "hotelDictionary&StateMachine_1",
+        "isValidCountry&StateMachine_1",
+        "queueItemReferenceId&StateMachine_1",
+        "transactionItem&StateMachine_1",
+        "isValidRecords&StateMachine_1",
+        "isValidCheckin&StateMachine_1",
+        "isValidCheckout&StateMachine_1",
+        "isValidAge&StateMachine_1",
+        "isValidEmail&StateMachine_1",
+        "userReferenceId&StateMachine_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Excel Data Extraction.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "dataTableText&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_excelPath",
+        "out_dt_dataTable",
+        "out_isExcelRead"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Input Validation.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "emailRegex&Sequence_1",
+        "maxAge&Sequence_1",
+        "minAge&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_transactionItem",
+        "out_emptyColumnsList",
+        "out_isValidAge",
+        "out_isValidCheckout",
+        "out_isValidCheckin",
+        "out_isValidEmail"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Skyscanner Automation.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "dt_extractedHotelsTable&Sequence_1",
+        "hotelNameSelector&Sequence_1",
+        "hotelAddressList&Sequence_1",
+        "numberOfTableRows&Sequence_1",
+        "tableRowCounter&Sequence_1",
+        "extractedHotelsTableText&Sequence_1",
+        "monthYearString&Sequence_1",
+        "dateArray&Sequence_1",
+        "monthString&Sequence_1",
+        "yearInt&Sequence_1",
+        "monthInt&Sequence_1",
+        "dayInt&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_userReferenceId",
+        "in_transactionItem",
+        "out_isValidCountry",
+        "io_hotelDictionary"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Get Hotel Address.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "addressText&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "io_hotelAddressList",
+        "in_hotelName",
+        "in_hotelUrl"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Wise Invoice Automation.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "invoiceExists&Sequence_1",
+        "invoicePDF&Sequence_1",
+        "travellerFullName&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_userReferenceId",
+        "in_transactionItem",
+        "io_hotelDictionary"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Send Email Attachments.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "supportMessageTemp&Sequence_1",
+        "emptyInputStrings&Sequence_1",
+        "travellerName&Sequence_1",
+        "travellerEmail&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "io_supportMessage",
+        "in_isValidCountry",
+        "in_userReferenceId",
+        "in_emptyColumnsList",
+        "in_isValidAge",
+        "in_isValidCheckout",
+        "in_isValidCheckin",
+        "in_isValidEmail",
+        "in_isValidRecords",
+        "in_transactionItem"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}
